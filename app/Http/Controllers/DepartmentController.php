@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Department;
+use App\department;
 
 class DepartmentController extends Controller {
     public function getAllDepartments() {
-        $departments = Department::all();
+        $departments = department::all();
 
         $response = [
             'departments' => $departments
@@ -17,12 +17,12 @@ class DepartmentController extends Controller {
     }
 
     public function postDepartment(Request $request) {
-        $department = new Department();
+        $department = new department();
         $department->department_id = $request->input('department_id');
 
         // Have to find whether the given id exists
         // If exists, error
-        $test = Department::where('department_id', $department->department_id)->first();
+        $test = department::where('department_id', $department->department_id)->first();
         if ($test) {
             return response()->json(['error_code' => '101', 'error_msg' => '部门编号重复!'], 201);
         }
@@ -36,7 +36,7 @@ class DepartmentController extends Controller {
     }
 
     public function putDepartment(Request $request, $department_id) {
-        $department = Department::where('department_id', $department_id)->first();
+        $department = department::where('department_id', $department_id)->first();
         if(!$department){
             return response()->json(['error_code'=>404,'error_msg'=>'Invalid department id!'], 404);
         }
@@ -49,7 +49,7 @@ class DepartmentController extends Controller {
     }
 
     public function deleteDepartment($department_id){
-        $department = Department::where('department_id', $department_id)->first();
+        $department = department::where('department_id', $department_id)->first();
         if(!$department){
             return response()->json(['error_code'=>404,'error_msg'=>'Invalid department id!'], 404);
         }

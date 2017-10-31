@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+//region CURD APIs of department
 Route::get('/department', [
     'uses' => 'DepartmentController@getAllDepartments'
 ]);
@@ -28,3 +29,4 @@ Route::put('/department/{department_id}', [
 Route::delete('/department/{department_id}', [
     'uses' => 'DepartmentController@deleteDepartment'
 ]);
+//endregion
