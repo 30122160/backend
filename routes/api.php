@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+//region CURD of all database tables
+
 //region CURD APIs of department
 Route::get('/department', [
     'uses' => 'DepartmentController@getAllDepartments'
@@ -29,4 +31,34 @@ Route::put('/department/{department_id}', [
 Route::delete('/department/{department_id}', [
     'uses' => 'DepartmentController@deleteDepartment'
 ]);
+//endregion
+
+//region CURD APIs of application_status
+Route::get('/application_status', [
+    'uses' => 'ApplicationStatusController@getAllStatuses'
+]);
+
+Route::post('/application_status', [
+    'uses' => 'ApplicationStatusController@postStatus'
+]);
+
+Route::put('/application_status/{application_status_id}', [
+    'uses' => 'ApplicationStatusController@putStatus'
+]);
+
+Route::delete('/application_status/{application_status_id}', [
+    'uses' => 'ApplicationStatusController@deleteStatus'
+]);
+//endregion
+
+//region CURD APIs of property_unit
+Route::get();
+
+Route::post();
+
+Route::put();
+
+Route::delete();
+//endregion
+
 //endregion

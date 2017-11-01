@@ -10,6 +10,7 @@ class DepartmentController extends Controller {
         $departments = department::all();
 
         $response = [
+            'number' => count($departments),
             'departments' => $departments
         ];
 
@@ -18,13 +19,15 @@ class DepartmentController extends Controller {
 
     public function postDepartment(Request $request) {
         $department = new department();
-        $department->department_id = $request->input('department_id');
+
+        // To do: algorithm to generate department_id
+        //$department->department_id = $request->input('department_id');
 
         // Have to find whether the given id exists
         // If exists, error
         $test = department::where('department_id', $department->department_id)->first();
         if ($test) {
-            return response()->json(['error_code' => '101', 'error_msg' => '部门编号重复!'], 201);
+            return response()->json(['error_code' => 101, 'error_msg' => '部门编号重复!'], 201);
         }
 
         $department->department_name = $request->input('department_name');
@@ -53,8 +56,11 @@ class DepartmentController extends Controller {
         if(!$department){
             return response()->json(['error_code'=>404,'error_msg'=>'Invalid department id!'], 404);
         }
-        $department->department_status = 0;
-        $department->save();
+
+        // To do: have to check whether this department is
+        // referenced in other tables, if so, should do something to avoid errors.
+        //$department->department_status = 0;
+        //$department->save();
 
         return response()->json(['error_code'=>001,'error_msg'=>'部门删除成功!'], 201);
     }
