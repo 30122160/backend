@@ -52,13 +52,21 @@ Route::delete('/application_status/{application_status_id}', [
 //endregion
 
 //region CURD APIs of property_unit
-Route::get();
+Route::get('/property_unit', [
+    'uses' => 'PropertyUnitController@getAllUnits'
+]);
 
-Route::post();
+Route::post('/property_unit', [
+    'uses' => 'PropertyUnitController@postUnit'
+]);
 
-Route::put();
+Route::put('/property_unit/{property_unit_id}', [
+    'uses' => 'PropertyUnitController@putUnit'
+]);
 
-Route::delete();
+Route::delete('/property_unit/{property_unit_id}', [
+    'uses' => 'PropertyUnitController@deleteUnit'
+]);
 //endregion
 
 //endregion
