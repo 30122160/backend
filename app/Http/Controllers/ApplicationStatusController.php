@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\application_status;
 
-class ApplicationStatusController extends Controller
-{
-    public function getAllStatuses(){
+class ApplicationStatusController extends Controller {
+    public function getAllStatuses() {
         $statuses = application_status::all();
 
         $response = [
@@ -18,7 +17,7 @@ class ApplicationStatusController extends Controller
         return response()->json($response, 200);
     }
 
-    public function postStatus(Request $request){
+    public function postStatus(Request $request) {
         $status = new application_status();
 
         /*
@@ -36,26 +35,26 @@ class ApplicationStatusController extends Controller
         $status->application_status_remark = $request->input('application_status_remark');
         $status->save();
 
-        return response()->json(['error_code'=>001, 'error_msg'=>'申请状态新增成功！'], 201);
+        return response()->json(['error_code' => 001, 'error_msg' => '申请状态新增成功！'], 201);
     }
 
-    public function putStatus(Request $request, $application_status_id){
+    public function putStatus(Request $request, $application_status_id) {
         $status = application_status::where('application_status_id', $status->application_status_id)->first();
-        if(!$status){
-            return response()->json(['error_code'=>404, 'error_msg'=>'指定id的状态不存在！'], 404);
+        if (!$status) {
+            return response()->json(['error_code' => 404, 'error_msg' => '指定id的状态不存在！'], 404);
         }
 
         $status->application_status_name = $request->input('application_status_name');
         $status->application_status_remark = $request->input('application_status_remark');
         $status->save();
 
-        return response()->json(['error_code'=>001, 'error_msg'=>'申请状态信息修改成功！'], 201);
+        return response()->json(['error_code' => 001, 'error_msg' => '申请状态信息修改成功！'], 201);
     }
 
-    public function deleteStatus($application_status_id){
+    public function deleteStatus($application_status_id) {
         $status = application_status::where('application_status_id', $status->application_status_id)->first();
-        if(!$status){
-            return response()->json(['error_code'=>404, 'error_msg'=>'指定id的状态不存在！'], 404);
+        if (!$status) {
+            return response()->json(['error_code' => 404, 'error_msg' => '指定id的状态不存在！'], 404);
         }
 
         // To do: have to check whether this status
@@ -63,6 +62,6 @@ class ApplicationStatusController extends Controller
         //$status->delete();
         //$status->save();
 
-        return response()->json(['error_code'=>001, 'error_msg'=>'申请状态信息删除成功！'], 201);
+        return response()->json(['error_code' => 001, 'error_msg' => '申请状态信息删除成功！'], 201);
     }
 }
