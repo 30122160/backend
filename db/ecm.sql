@@ -178,7 +178,7 @@ CREATE TABLE asset_category(
 
 CREATE TABLE accounts(
     account_username VARCHAR(255) PRIMARY KEY,  -- check 
-    account_password VARCHAR(255),            -- check
+    password VARCHAR(255),            -- check
     account_role_id INT,
     account_status BOOLEAN,
     remember_token VARCHAR(100),
