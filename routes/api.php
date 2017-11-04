@@ -87,4 +87,25 @@ Route::delete('/approval_record_status/{approval_record_status_id}',[
 ]);
 //endregion
 
+
+
+//region CURD APIs of approval_record_status zj
+Route::get('/asset_purchase_approval_record',[
+    'uses' => 'AssetPurchaseApprovalRecordController@getAllAssetPurchaseApprovalRecord'
+]);
+
+Route::post('/asset_purchase_approval_record',[
+    'uses' => 'AssetPurchaseApprovalRecordController@postAssetPurchaseApprovalRecord'
+]);
+
+Route::put('/asset_purchase_approval_record/{asset_purchase_approval_record_id}',[
+    'uses' => 'AssetPurchaseApprovalRecordController@putAssetPurchaseApprovalRecord'
+]);
+
+Route::delete('/asset_purchase_approval_record/{asset_purchase_approval_record_id}',[
+    'uses' => 'AssetPurchaseApprovalRecordController@deleteAssetPurchaseApprovalRecord'
+]);
+//endregion
+
+
 //endregion
