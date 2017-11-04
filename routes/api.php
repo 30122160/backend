@@ -69,4 +69,22 @@ Route::delete('/property_unit/{property_unit_id}', [
 ]);
 //endregion
 
+//region CURD APIs of approval_record_status
+Route::get('/approval_record_status',[
+    'uses' => 'ApprovalRecordStatusController@getAllApprovalRecordStatuses'
+]);
+
+Route::post('/approval_record_status',[
+    'uses' => 'ApprovalRecordStatusController@postApprovalRecordStatus'
+]);
+
+Route::put('/approval_record_status/{approval_record_status_id}',[
+    'uses' => 'ApprovalRecordStatusController@putApprovalRecordStatus'
+]);
+
+Route::delete('/approval_record_status/{approval_record_status_id}',[
+    'uses' => 'ApprovalRecordStatusController@deleteApprovalRecordStatus'
+]);
+//endregion
+
 //endregion

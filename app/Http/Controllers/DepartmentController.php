@@ -35,7 +35,7 @@ class DepartmentController extends Controller {
         $department->department_remark = $request->input('department_remark');
 
         $department->save();
-        return response()->json(['error_code' => 001, 'error_msg' => '新增部门成功!'], 201);
+        return response()->json(['error_code' => 001, 'error_msg' => '新增部门成功!'], 200);
     }
 
     public function putDepartment(Request $request, $department_id) {
